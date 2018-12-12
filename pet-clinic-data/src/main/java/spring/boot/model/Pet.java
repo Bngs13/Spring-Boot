@@ -1,4 +1,4 @@
-package com.springframework.springboot.model;
+package spring.boot.model;
 
 import java.time.LocalDate;
 

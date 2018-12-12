@@ -1,4 +1,4 @@
-package com.springframework.springboot.model;
+package spring.boot.model;
 
 public class Person {
     private String firstName;
