@@ -1,11 +1,11 @@
 package spring.boot.service.map;
 
 import spring.boot.model.Vet;
-import spring.boot.service.CrudService;
+import spring.boot.service.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService{
 
     @Override
     public Set<Vet> findAll() {
@@ -23,8 +23,8 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements Crud
     }
 
     @Override
-    public void save(Vet object) {
-        super.save(object.getId(), object);
+    public Vet save(Vet object) {
+       return super.save(object.getId(), object);
     }
 
     @Override
