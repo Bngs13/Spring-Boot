@@ -1,13 +1,12 @@
 package spring.boot.bootstrap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import spring.boot.model.Owner;
 import spring.boot.model.Vet;
 import spring.boot.service.OwnerService;
 import spring.boot.service.VetService;
-import spring.boot.service.map.OwnerServiceMap;
-import spring.boot.service.map.VetServiceMap;
 
 @Component //It becomes a Spring Bean, 20181218
 public class DataLoader implements CommandLineRunner {
@@ -15,11 +14,15 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();//It is not IoC, 20181218
-        vetService = new VetServiceMap();
+    @Autowired //You don't need it, because it is Constructor DI
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
+    //public DataLoader() {
+    //    ownerService = new OwnerServiceMap();//It is not IoC, 20181218
+    //    vetService = new VetServiceMap();
+    //}
 
     @Override
     public void run(String... args) throws Exception {

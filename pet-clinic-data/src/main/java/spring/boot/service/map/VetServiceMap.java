@@ -1,10 +1,12 @@
 package spring.boot.service.map;
 
+import org.springframework.stereotype.Service;
 import spring.boot.model.Vet;
 import spring.boot.service.VetService;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService{
 
     @Override

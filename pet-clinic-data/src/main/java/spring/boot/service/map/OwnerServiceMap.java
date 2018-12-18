@@ -1,9 +1,11 @@
 package spring.boot.service.map;
+import org.springframework.stereotype.Service;
 import spring.boot.model.Owner;
 import spring.boot.service.OwnerService;
 
 import java.util.Set;
 
+@Service //It is same with @Component, 20181218
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
 
     @Override
