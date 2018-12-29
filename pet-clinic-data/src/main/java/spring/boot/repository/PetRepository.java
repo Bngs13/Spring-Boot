@@ -1,7 +1,9 @@
 package spring.boot.repository;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import spring.boot.model.Pet;
-import spring.boot.service.CrudService;
 
-public interface PetRepository extends CrudService<Pet,Long> {
+@Repository
+public interface PetRepository extends CrudRepository<Pet,Long> {
 }

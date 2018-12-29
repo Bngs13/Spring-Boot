@@ -1,16 +1,18 @@
 package spring.boot.service.map;
+
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-import spring.boot.model.Pet;
-import spring.boot.service.CrudService;
+import spring.boot.model.Speciality;
+import spring.boot.service.SpecialityService;
 
 import java.util.Set;
+
 @Service
 @Profile({"default","map"}) //20181224
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements SpecialityService {
 
     @Override
-    public Set<Pet> findAll() {
+    public Set<Speciality> findAll() {
         return super.findAll();
     }
 
@@ -20,17 +22,17 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements Crud
     }
 
     @Override
-    public void delete(Pet object) {
+    public void delete(Speciality object) {
         super.delete(object);
     }
 
     @Override
-    public Pet save(Pet object) {
-       return super.save(object);
+    public Speciality save(Speciality object) {
+        return super.save(object);
     }
 
     @Override
-    public Pet findById(Long id) {
+    public Speciality findById(Long id) {
         return super.findById(id);
     }
 }
