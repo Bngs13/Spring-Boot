@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>List of Pet Owners</title>
 </head>
 <body>
-<h1 th:text="'List of Owners'"></h1>
-<table>
-    <thead>
-    <tr>
-        <td>Id</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="owner:${owners}">
-        <td th:text="${owner?.id}">Test</td>
-        <td th:text="${owner?.firstName}">Test</td>
-        <td th:text="${owner?.lastName}">Test</td>
-    </tr>
-    </tbody>
-</table>
+<h2 th:text="'List of Owners'"></h2>
+<div>
+    <div class="row">
+        <div class="col-md-4">Id</div>
+        <div class="col-md-4">First Name</div>
+        <div class="col-md-4">Last Name</div>
+    </div>
+    <div th:each="owner:${owners}">
+        <div class="col-md-4" th:text="${owner?.id}">Test</div>
+        <div class="col-md-4" th:text="${owner?.firstName}">Test</div>
+        <div class="col-md-4" th:text="${owner?.lastName}">Test</div>
+    </div>
+</div>
 </body>
 </html>
