@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import spring.boot.model.*;
-import spring.boot.service.OwnerService;
-import spring.boot.service.PetTypeService;
-import spring.boot.service.SpecialityService;
-import spring.boot.service.VetService;
+import spring.boot.service.*;
 
 import java.time.LocalDate;
 
@@ -18,13 +15,19 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
     @Autowired //You don't need it, because it is Constructor DI
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService,
+                      VetService vetService,
+                      PetTypeService petTypeService,
+                      SpecialityService specialityService,
+                      VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
     //public DataLoader() {
     //    ownerService = new OwnerServiceMap();//It is not IoC, 20181218
@@ -35,8 +38,8 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         //20181223
-        int count= petTypeService.findAll().size();
-        if(count==0)loadData();
+        int count = petTypeService.findAll().size();
+        if (count == 0) loadData();
     }
 
     private void loadData() {
@@ -93,7 +96,11 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
-
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Ketty");
+        visitService.save(catVisit);
         System.out.println("Loaded Owners....");
 
         Vet vet1 = new Vet();

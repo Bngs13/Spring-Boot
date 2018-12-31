@@ -8,7 +8,7 @@ import spring.boot.service.VisitService;
 import java.util.Set;
 
 @Service
-@Profile({"default","map"}) //20181224
+@Profile({"default", "map"}) //20181224
 public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override
@@ -28,6 +28,9 @@ public class VisitServiceMap extends AbstractMapService<Visit, Long> implements 
 
     @Override
     public Visit save(Visit object) {
+
+        if (object.getPet() == null || object.getPet().getOwner() == null)
+            throw new RuntimeException("Invalid Visit");
         return super.save(object);
     }
 
