@@ -26,8 +26,7 @@
         </div>
         <div class="navbar-collapse collapse" id="main-navbar">
             <ul class="nav navbar-nav navbar-right">
-                <!-- th:class="${active==menu ? 'active' : ''}"-->
-                <li th:fragment="menuItem (path,active,title,glyph,text)" class="active">
+                <li th:fragment="menuItem (path,active,title,glyph,text)" th:class="${active==menu ? 'active' : ''}">
                     <a th:href="@{__${path}__}" th:title="${title}">
                         <span th:class="'glyphicon  glyphicon-'+${glyph}" class="glyphicon glyphicon-home" aria-hidden="true"></span>
                         <span th:text="${text}">Template</span>
