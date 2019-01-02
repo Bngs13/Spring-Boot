@@ -1,9 +1,17 @@
 package spring.boot.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+//20190102 #20
+@Data
+@Builder //constructor inheritance like Owner -> Person -> BaseEntity
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(exclude = {"pets"})
 //20181219 #16
 @Entity
 @Table(name = "Owners")
@@ -20,35 +28,4 @@ public class Owner extends Person {
     //mappedBy refers to Owner property in the Pet class
     private Set<Pet> pets = new HashSet<>();
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
 }

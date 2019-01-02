@@ -1,9 +1,18 @@
 package spring.boot.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data //20190102 #20
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 //20181219 #16
 @Entity
 @Table(name = "Vets")
@@ -17,11 +26,4 @@ public class Vet extends Person {
             joinColumns = @JoinColumn(name="VetId"),inverseJoinColumns = @JoinColumn(name = "SpecialityId"))
     private Set<Speciality> specialities=new HashSet<>();
 
-    public Set<Speciality> getSpecialities() {
-        return specialities;
-    }
-
-    public void setSpecialities(Set<Speciality> specialities) {
-        this.specialities = specialities;
-    }
 }
