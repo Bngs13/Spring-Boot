@@ -7,6 +7,7 @@ import spring.boot.repository.OwnerRepository;
 import spring.boot.service.OwnerService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -58,7 +59,7 @@ public class OwnerSDJpaService implements OwnerService {
         if (object == null) return;
         try {
             ownerRepository.delete(object);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             throw new RuntimeException("Exception from delete method into OwnerRepository");
         }
     }
@@ -66,11 +67,20 @@ public class OwnerSDJpaService implements OwnerService {
     @Override
     public void deleteById(Long id) {
 
-        if(id==0) return;
+        if (id == 0) return;
         try {
             ownerRepository.deleteById(id);
-        }catch(Exception ex) {
+        } catch (Exception ex) {
             throw new RuntimeException("Exception in delete method into OwnerRepository");
         }
     }
+
+    //20190109
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
+
+        if (lastName == null || lastName.isEmpty()) return null;
+        return ownerRepository.findAllByLastNameLike(lastName);
+    }
+
 }

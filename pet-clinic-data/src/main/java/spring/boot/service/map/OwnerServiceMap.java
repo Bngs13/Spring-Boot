@@ -8,6 +8,7 @@ import spring.boot.service.OwnerService;
 import spring.boot.service.PetService;
 import spring.boot.service.PetTypeService;
 
+import java.util.List;
 import java.util.Set;
 
 @Service //It is same with @Component, 20181218
@@ -73,6 +74,12 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
+        return null;
+    }
+
+    //20190109 - TODO: impl
+    @Override
+    public List<Owner> findAllByLastNameLike(String lastName) {
         return null;
     }
 }
