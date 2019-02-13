@@ -3,11 +3,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import spring.boot.model.Pet;
 import spring.boot.service.CrudService;
+import spring.boot.service.PetService;
 
 import java.util.Set;
 @Service
 @Profile({"default","map"}) //20181224
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
