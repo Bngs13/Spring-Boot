@@ -25,11 +25,11 @@ public class OwnerController {
         this.ownerService = ownerService;
     }
 
-    // @GetMapping({"", "/", "/index", "/index.html"})
-    // public String ListOwners(Model model) {
-    //    model.addAttribute("owners", ownerService.findAll());
-    //    return "owners/index";
-    // }
+    @GetMapping({"", "/", "/index", "/index.html"})
+    public String ListOwners(Model model) {
+        model.addAttribute("owners", ownerService.findAll());
+        return "owners/index";
+    }
 
     //20190112,  Builder pattern to ensure the thread-safety and atomicity of object creation.
     //Builder-final ??
